@@ -50,6 +50,8 @@ class CategoryController extends Controller
 
         $title=$request->title;
         $desc=$request->desc;
+        
+        $backImg = "";
 
         $messages = [
             'required' => 'The :attribute field is required.',
@@ -67,10 +69,29 @@ class CategoryController extends Controller
 
         }
 
-        $category = Category::create([
-                'title' => $title,
-                'desc' => $desc,
-                ]);
+        if($_FILES["file"]["name"]) {
+            $temp = explode(".", $_FILES["file"]["name"]);
+            $extension = end($temp);
+
+            if (file_exists("upload/images/category/" . $_FILES["file"]["name"])) 
+                unlink("upload/images/category/" . $_FILES["file"]["name"]);
+       
+            move_uploaded_file($_FILES["file"]["tmp_name"],
+            "upload/images/category/" . $_FILES["file"]["name"]);
+            $backImg = $_FILES["file"]["name"];
+        }
+
+        if ($backImg != "")
+            $category = Category::create([
+                    'title' => $title,
+                    'desc' => $desc,
+                    'url' => $backImg
+                    ]);
+        else
+            $category = Category::create([
+            'title' => $title,
+            'desc' => $desc,
+            ]);
         
         return redirect('admin/category');
     }
@@ -101,7 +122,21 @@ class CategoryController extends Controller
         $title=$request->title;
         $desc=$request->desc;
 
+        $backImg = "";
+
         $current_category = array();
+
+        if($_FILES["file"]["name"]) {
+            $temp = explode(".", $_FILES["file"]["name"]);
+            $extension = end($temp);
+
+            if (file_exists("upload/images/category/" . $_FILES["file"]["name"])) 
+                unlink("upload/images/category/" . $_FILES["file"]["name"]);
+       
+            move_uploaded_file($_FILES["file"]["tmp_name"],
+            "upload/images/category/" . $_FILES["file"]["name"]);
+            $backImg = $_FILES["file"]["name"];
+        }
 
         $messages = [
             'required' => 'The :attribute field is required.',
@@ -118,8 +153,16 @@ class CategoryController extends Controller
                         ->withInput();
 
         }
-
-        $cateogry = DB::table('categories')
+        if ($backImg != "")
+            $cateogry = DB::table('categories')
+                ->where('id', $id)
+                ->update([
+                    'title' => $title,
+                    'desc' => $desc,
+                    'url' => $backImg
+                ]);
+        else
+            $cateogry = DB::table('categories')
             ->where('id', $id)
             ->update([
                 'title' => $title,

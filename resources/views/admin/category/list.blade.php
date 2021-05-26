@@ -56,6 +56,12 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="basic-form m-t-20">
+                                        <div class="form-group">
+                                            <label>File</label>
+                                            <input type="file" name="file" accept="image/*">
+                                        </div>
+                                    </div>
                                      <div class="basic-form m-t-20 text-center">
                                         <div class="form-group">
                                             <button class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5 sbmt-btn" type="submit">Save</button>
@@ -78,6 +84,7 @@
                                                 <tr>
                                                     <th class="text-center">Title</th>
                                                     <th >Description</th>
+                                                    <th>Img</th>
                                                     <th style="text-align:center">Actions</th>
                                                 </tr>
                                             </thead>
@@ -90,7 +97,10 @@
                                                          <td>
                                                             {{$category->desc}}
                                                         </td>
-                                                        
+                                                        <td class="text-center">
+                                                            <div class="round-img">
+                                                            <a href="#"><img style="width:50px;height:50px;"src="{{asset('upload/images/category/'.$category->url)}}" alt=""></a>
+                                                        </div>
                                                          <td style="text-align:center">
                                                             <span><a href="{{url('admin/category_info/'.$category->id)}}"><i class="ti-pencil-alt color-success"></i></a></span>
                                                             <span><a href="{{url('admin/category_del/'.$category->id)}}"><i class="ti-trash color-danger"></i> </a></span>
