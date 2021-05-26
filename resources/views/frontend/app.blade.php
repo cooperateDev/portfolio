@@ -14,7 +14,7 @@
     <title>W.W</title>
 
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="{{ asset('assets/frontend/images/favicon.png') }}" type="image/png">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo.png') }}" type="image/png">
 
     <!--====== Bootstrap css ======-->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}">
@@ -192,7 +192,7 @@
                     <div class="col-lg-6">
                         <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.4s">
                             <div class="about-icon">
-                                <img src="{{ asset('upload/images/blockchain.png') }}" alt="Icon">
+                                <img src="{{ asset('upload/images/category' . '/' . $category->url) }}" alt="Icon">
                             </div>
                             <div class="about-content media-body">
                                 <h4 class="about-title">{{ $category->title }}</h4>
@@ -281,7 +281,7 @@
                             <div class="col-lg-4">
                                 <div class="single-testimonial mt-30 mb-30 text-center">
                                     <div class="testimonial-image">
-                                        <img src="{{ asset('upload/images/avatar/image.jpg') }}" alt="Author">
+                                        <img src="{{ asset('upload/images/avatar' . '/' . $user->avatar) }}" alt="Author">
                                     </div>
                                     <div class="testimonial-content">
                                         <p class="text">{{ $user->skill }}</p>
@@ -307,7 +307,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-5">
                         <div class="copyright text-center text-lg-left mt-10">
-                            <p class="text">Crafted by <a style="color: #38f9d7" rel="nofollow" href="https://uideck.con">UIdeck</a> and UI Elements from <a style="color: #38f9d7" rel="nofollow" href="https://ayroui.com">Ayro UI</a></p>
+                            <p class="text">Win.Win Company</p>
                         </div> <!--  copyright -->
                     </div>
                     <div class="col-lg-2">

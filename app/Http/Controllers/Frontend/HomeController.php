@@ -18,10 +18,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::get();
+        $users = User::get()->where('role', 1);
         $categories = Category::get();
         $slides = Slide::get();
-        $tasks = Task::join('categories', 'tasks.category_id', '=', 'categories.id')->get();
+        $tasks = Task::select('tasks.*', 'categories.title')
+                        ->join('categories', 'tasks.category_id', '=', 'categories.id')
+                        ->get();
 
         return view('frontend.app', [
             'users'         => $users,
