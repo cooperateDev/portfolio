@@ -286,7 +286,7 @@
                                     <div class="testimonial-content">
                                         <p class="text">{{ $user->skill }}</p>
                                         <h6 class="author-name">{{ $user->name }}</h6>
-                                        <span class="sub-title">CEO, GrayGrids</span>
+                                        <!-- <span class="sub-title">CEO, GrayGrids</span> -->
                                     </div>
                                 </div> <!-- single testimonial -->
                             </div>
