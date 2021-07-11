@@ -20,7 +20,7 @@ extends('admin.layouts.app')
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="#">Dashboard</a></li>
+                                    <li><a href="{{url('admin')}}">Dashboard</a></li>
                                     <li class="active">MemberList</li>
                                 </ol>
                             </div>

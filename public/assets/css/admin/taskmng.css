@@ -1,0 +1,20 @@
+.complete {
+  background: #b1efb1 !important;
+}
+
+.desc {
+  width: 300px !important;
+}
+
+.total_price {
+  float: right;
+  color: red;
+}
+
+.month, .year {
+  width: 100px;
+}
+
+.incomplete {
+  background: pink !important;
+}

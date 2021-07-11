@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Dashboard
     Route::get('/', 'DashboardController@index');
+    Route::get('/filter', 'DashboardController@index');
 
     // Member Management
     Route::get('/member', 'MemberController@index');
@@ -72,5 +73,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Route::get('permissions/{user}/repeat', 'PermissionController@repeat')->name('permissions.repeat');
     // Route::get('dashboard/log-chart', 'DashboardController@getLogChartData')->name('dashboard.log.chart');
     // Route::get('dashboard/registration-chart', 'DashboardController@getRegistrationChartData')->name('dashboard.registration.chart');
+
+
+    // Task MNG
+    Route::get('/taskmng', 'TaskMNGController@index');
+    Route::get('/taskmng_create', 'TaskMNGController@task_create');
+    Route::post('/taskmng_add', 'TaskMNGController@task_add');
+    Route::get('/taskmng_info/{id}', 'TaskMNGController@task_info');
+    Route::get('/taskmng_del/{id}', 'TaskMNGController@task_del');
+    Route::post('/taskmng_edit/{id}', 'TaskMNGController@task_edit');
 });
 

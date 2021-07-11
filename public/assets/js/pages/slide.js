@@ -1,6 +1,5 @@
 (function ($) {
 function preview_profile_image(input) {
-        alert('2234324');
         if (input.files && input.files[0]) {
             var filerdr = new FileReader();
 

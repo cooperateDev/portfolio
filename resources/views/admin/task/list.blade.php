@@ -11,7 +11,7 @@
                     <div class="col-lg-8 p-r-0 title-margin-right">
                         <div class="page-header">
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1>Task</h1>
                             </div>
                         </div>
                     </div>
@@ -20,7 +20,7 @@
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="#">Dashboard</a></li>
+                                    <li><a href="{{url('admin/')}}">Dashboard</a></li>
                                     <li class="active">Task List</li>
                                 </ol>
                             </div>

@@ -1,16 +1,14 @@
 @extends('admin.layouts.app')
+
+@section('style')
+    <link href="{{asset('assets/css/admin/taskmng.css')}}" rel="stylesheet">
+@endsection
+
+@section('scripts')
+    <script src="{{asset('assets/js/pages/task.js')}}"></script>
+@endsection
 @section('page')
 
-    @section('style')
-        <link href="{{asset('assets/css/admin/taskmng.css')}}" rel="stylesheet">
-    @endsection
-
-    @section('scripts')
-        <script src="{{asset('assets/js/pages/dashboard.js')}}"></script>
-        <script src="{{asset('assets/js/pages/task.js')}}"></script>
-    @endsection
-
-    <!-- /# sidebar -->
     <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
@@ -18,7 +16,7 @@
                     <div class="col-lg-8 p-r-0 title-margin-right">
                         <div class="page-header">
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1>Task Lists</h1>
                             </div>
                         </div>
                     </div>
@@ -27,8 +25,8 @@
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="{{url('admin')}}">Dashboard</a></li>
-                                    <li class="active">Home</li>
+                                    <li><a href="{{url('admin/')}}">Dashboard</a></li>
+                                    <li class="active">Task List</li>
                                 </ol>
                             </div>
                         </div>
@@ -38,29 +36,13 @@
                 <!-- /# row -->
                 <section id="main-content">
                     <div class="row">
-                        <div class="col-md-2">
-                            <span>Filter</span>
-                       
-                            <select class="form-control year" name="year">
-                                @for($i = date('Y')-5; $i <= date('Y')+5; $i++)
-                                    <option @if($i == date('Y')) selected @endif value="{{$i}}">{{$i}}</option>
-                                @endfor
-                            </select>
-                       
-                            <select class="form-control month" name="month">
-                                @for($i = 1; $i <= 12; $i++)
-                                    <option @if($i == date('m')) selected @endif value="{{$i}}">{{$i}}</option>
-                                @endfor
-                            </select>
-                        </div>
-                        <h3 class="total_price">Total Price :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ {{ $total_price }}</h3>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-12">
                             <div class="card alert">
                                 <div class="card-header row">
                                     <h4>Task List</h4>
-                                    
+                                    <a href="{{url('admin/taskmng_create')}}">
+                                        <i class="ti-plus color-danger" style="float: right">Add</i>
+                                    </a>
                                 </div>
                                 <div class="bootstrap-data-table-panel">
                                     <div class="table-responsive">
@@ -81,7 +63,7 @@
                                                     <th class="text-center">Freelancer.com</th>
                                                     <th class="text-center">Paypal</th>
                                                     <th class="text-center">Payoneer</th>
-                                                    <th class="text-center">Total Price</th>
+                                                    <th class="text-center" style="text-align:center">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -117,7 +99,7 @@
                                                                 Hourly
                                                             @endif
                                                         </td>
-                                                        <td class="text-right">
+                                                        <td>
                                                             {{$task->contract_price}}
                                                         </td>
                                                         <td>
@@ -141,7 +123,10 @@
                                                         <td class="text-right">@if($task->freelancer != 0){{$task->freelancer}}@endif</td>
                                                         <td class="text-right">@if($task->paypal != 0){{$task->paypal}}@endif</td>
                                                         <td class="text-right">@if($task->payoneer != 0){{$task->payoneer}}@endif</td>
-                                                        <td class="text-right">@if($task->price != 0){{$task->price}}@endif</td>
+                                                        <td style="text-align:center">
+                                                            <span><a href="{{url('admin/taskmng_info/'.$task->id)}}"><i class="ti-pencil-alt color-success"></i></a></span>
+                                                            <span><a href="{{url('admin/taskmng_del/'.$task->id)}}"><i class="ti-trash color-danger"></i> </a></span>
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -157,13 +142,5 @@
                 </section>
             </div>
         </div>
-    </div>
-
-    <div id="search">
-        <button type="button" class="close">×</button>
-        <form>
-            <input type="search" value="" placeholder="type keyword(s) here" />
-            <button type="submit" class="btn btn-primary">Search</button>
-        </form>
     </div>
 @endsection 

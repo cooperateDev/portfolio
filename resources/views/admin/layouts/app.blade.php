@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{--CSRF Token--}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Adminity : Widget</title>
+    <title>Admin</title>
 
     <!-- ================= Favicon ================== -->
     <!-- Standard -->
@@ -31,12 +31,13 @@
     <link href="{{asset('assets/css/lib/owl.carousel.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/lib/owl.theme.default.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/lib/weather-icons.css')}}" rel="stylesheet">
-     <link href="{{asset('assets/css/lib/datatable/dataTables.bootstrap.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('assets/css/lib/datatable/buttons.bootstrap.min.css')}}" rel="stylesheet" />
+     <!-- <link href="{{asset('assets/css/lib/datatable/dataTables.bootstrap.min.css')}}" rel="stylesheet" /> -->
+    <!-- <link href="{{asset('assets/css/lib/datatable/buttons.bootstrap.min.css')}}" rel="stylesheet" /> -->
     <link href="{{asset('assets/css/lib/menubar/sidebar.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/lib/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/lib/unix.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/admin/app.css')}}" rel="stylesheet">
     @yield('style')
 </head>
 
@@ -46,18 +47,20 @@
         <div class="nano">
             <div class="nano-content">
                 <ul>
+                    <li><a href="{{url('admin/')}}"><i class="ti-user"></i> Dashboard </a></
                     <li><a href="{{url('admin/member')}}"><i class="ti-user"></i> Member Management </a></li>
                     <li><a href="{{url('admin/task')}}"><i class="ti-briefcase"></i> Task Management</a></li>
                     <li><a href="{{url('admin/slide')}}"><i class="ti-image"></i> Slide Management</a></li>
                     <li><a href="{{url('admin/category')}}"><i class="ti-layers-alt"></i> Category Management</a></li>
-                    
+                    <li><a href="{{url('admin/taskmng')}}"><i class="ti-layers-alt"></i>Task lists</a></li>
+                    <li><a href="{{url('admin/report')}}"><i class="ti-layers-alt"></i>Daily Report</a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="header">
         <div class="pull-left">
-            <div class="logo"><a href="index.html"><!-- <img src="assets/images/logo.png" alt="" /> --><span>WIN - WIN</span></a></div>
+            <a href="{{url('admin')}}"><img src="{{ asset('assets/images/logo.png')}}" alt="" class="mark"/><div class="logo"><span>WIN - WIN</span></div></a>
             <div class="hamburger sidebar-toggle">
                 <span class="line"></span>
                 <span class="line"></span>
@@ -67,7 +70,7 @@
         <div class="pull-right p-r-15">
             <ul>
                
-                <li class="header-icon dib"><img class="avatar-img" src="{{asset('assets/images/avatar/1.jpg')}}" alt="" /> <span class="user-avatar">{{Auth::user()->name}} <i class="ti-angle-down f-s-10"></i></span>
+                <li class="header-icon dib"><img class="avatar-img" src="{{ asset('upload/images/avatar' . '/' . Auth::user()->avatar) }}" alt="" /> <span class="user-avatar">{{Auth::user()->name}} <i class="ti-angle-down f-s-10"></i></span>
                     <div class="drop-down dropdown-profile">
                         <div class="dropdown-content-body">
                             <ul>
